@@ -18,6 +18,7 @@ type NavItemProps = {
   active?: boolean
   navSize: string
 }
+
 export default function NavItem({
   icon,
   title,

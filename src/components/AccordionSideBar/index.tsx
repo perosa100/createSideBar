@@ -10,32 +10,24 @@ import {
 } from '@chakra-ui/react'
 import { LinkItemProps } from 'components/SideBar'
 import NextLink from 'next/link'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
+
 type AccordionSideBarProps = {
   menu: LinkItemProps
+  index: number
 }
 
-export default function AccordionSideBar({ menu }: AccordionSideBarProps) {
+export default function AccordionSideBar({
+  menu,
+  index
+}: AccordionSideBarProps) {
   const router = useRouter()
   const isActiveMenu = router.asPath.startsWith(String(menu.href))
-  const [openItems, setOpenItems] = useState([-1])
 
   return (
-    <Accordion
-      allowToggle
-      index={openItems}
-      onChange={(idx: any) => {
-        setOpenItems([idx])
-      }}
-    >
-      <NextLink href={menu.opcao ? '' : menu.href} passHref>
-        <AccordionItem
-          id={menu.href}
-          color={isActiveMenu ? 'red' : 'blue'}
-          isExpanded={true}
-          aria-expanded={isActiveMenu}
-          isFocusable={isActiveMenu}
-        >
+    <Accordion>
+      <NextLink href={menu.opcao ? '#' : menu.href} passHref>
+        <AccordionItem color={isActiveMenu ? 'red' : 'blue'}>
           <h2>
             <AccordionButton>
               <Box flex="1" textAlign="left">
@@ -47,8 +39,9 @@ export default function AccordionSideBar({ menu }: AccordionSideBarProps) {
           {menu?.opcao &&
             menu.opcao.map((op) => {
               const isActiveOpcao = router.pathname === op.href
+
               return (
-                <AccordionPanel pb={4}>
+                <AccordionPanel key={op.href} pb={4}>
                   <NextLink href={op.href} passHref>
                     <Link color={isActiveOpcao ? 'red' : 'blue'}>
                       {op.name}

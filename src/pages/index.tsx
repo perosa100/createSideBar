@@ -1,5 +1,6 @@
 import { Flex, Text, IconButton } from '@chakra-ui/react'
-import { Sidebar } from 'components/SideBar'
+import Sidebar from 'components/SideBar'
+
 import { FiMenu } from 'react-icons/fi'
 
 export default function Home() {

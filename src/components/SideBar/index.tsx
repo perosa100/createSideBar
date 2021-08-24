@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Flex,
-  Text,
-  IconButton,
-  Divider,
-  Avatar,
-  Heading
-} from '@chakra-ui/react'
+import { Flex, IconButton } from '@chakra-ui/react'
 import { FiMenu, FiDollarSign } from 'react-icons/fi'
 
 import { RiDashboardLine, RiContactsLine, RiGitMergeLine } from 'react-icons/ri'
@@ -68,7 +61,7 @@ const LinkItems: Array<LinkItemProps> = [
   }
 ]
 
-const SidebarMemo = () => {
+export default function Sidebar() {
   const [navSize, changeNavSize] = useState('large')
 
   return (
@@ -103,10 +96,9 @@ const SidebarMemo = () => {
         />
 
         {LinkItems.map((menu, index) => (
-          <AccordionSideBar key={index} menu={menu} />
+          <AccordionSideBar key={menu.name} menu={menu} index={index} />
         ))}
       </Flex>
     </Flex>
   )
 }
-export const Sidebar = React.memo(SidebarMemo)
