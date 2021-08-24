@@ -1,8 +1,9 @@
-import { Flex, Text, IconButton } from '@chakra-ui/react'
-import { Sidebar } from 'components/SideBar'
+import { Flex, IconButton, Text } from '@chakra-ui/react'
+import {Sidebar} from 'components/SideBar'
+import React from 'react'
 import { FiMenu } from 'react-icons/fi'
 
-export default function Home() {
+function Financeiro() {
   return (
     <Flex w="100%">
       <Sidebar />
@@ -20,9 +21,11 @@ export default function Home() {
             _hover={{ background: 'none' }}
             icon={<FiMenu />}
           />
-          to resize the vertical navigation bar.
+          usercreate.
         </Text>
       </Flex>
     </Flex>
   )
 }
+
+export default Financeiro
