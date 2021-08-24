@@ -1,4 +1,4 @@
-function Configuracoes() {
+function Configuracoes(props) {
   return (
     <>
       <h1>Configuracoes</h1>

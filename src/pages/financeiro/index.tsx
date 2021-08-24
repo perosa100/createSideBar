@@ -1,12 +1,12 @@
 import { Flex, IconButton, Text } from '@chakra-ui/react'
-import {Sidebar} from 'components/SideBar'
+import { Sidebar } from 'components/SideBar'
 import React from 'react'
 import { FiMenu } from 'react-icons/fi'
 
-function Financeiro() {
+function Financeiro(props) {
   return (
     <Flex w="100%">
-      <Sidebar />
+      <Sidebar {...props} />
       <Flex
         pos="absolute"
         top="50%"

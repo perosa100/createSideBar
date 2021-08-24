@@ -2,10 +2,10 @@ import { Flex, Text, IconButton } from '@chakra-ui/react'
 import { Sidebar } from 'components/SideBar'
 import { FiMenu } from 'react-icons/fi'
 
-export default function Home() {
+export default function Home(props) {
   return (
     <Flex w="100%">
-      <Sidebar />
+      <Sidebar {...props} />
       <Flex
         pos="absolute"
         top="50%"
