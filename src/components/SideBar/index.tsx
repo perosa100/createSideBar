@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {
+  Accordion,
   Flex,
   Text,
   IconButton,
@@ -12,7 +13,7 @@ import { FiMenu, FiDollarSign } from 'react-icons/fi'
 import { RiDashboardLine, RiContactsLine, RiGitMergeLine } from 'react-icons/ri'
 
 import { IconType } from 'react-icons'
-import AccordionSideBar from 'components/AccordionSideBar'
+import AccordionSideBarItem from 'components/AccordionSideBarItem'
 
 export interface LinkItemProps {
   name: string
@@ -68,8 +69,19 @@ const LinkItems: Array<LinkItemProps> = [
   }
 ]
 
-const SidebarMemo = () => {
+/*
+  Changes
+  1) Added props for openItems and function to set open items
+  2) Accordion is the container for Accordion items 
+  3) There should not be an Accordion per sidebar item 
+  4) allowMultiple will allow multiple accordion items to be opened 
+  5) items provide on onChange will now be an array of indices 
+  6) AccordionSideBar changed to AccordionSideBarItem 
+  7) AccordionSideBarItem needs a key - used the current iteration index
+*/
+const SidebarMemo = (props) => {
   const [navSize, changeNavSize] = useState('large')
+  const { openItems, updateItems } = props
 
   return (
     <Flex
@@ -101,10 +113,18 @@ const SidebarMemo = () => {
             else changeNavSize('small')
           }}
         />
-
-        {LinkItems.map((menu, index) => (
-          <AccordionSideBar key={index} menu={menu} />
-        ))}
+        <Accordion
+          allowToggle
+          allowMultiple
+          index={openItems}
+          onChange={(items: any) => {
+            updateItems(items)
+          }}
+        >
+          {LinkItems.map((menu, index) => (
+            <AccordionSideBarItem key={index} menu={menu} />
+          ))}
+        </Accordion>
       </Flex>
     </Flex>
   )

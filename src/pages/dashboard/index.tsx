@@ -3,10 +3,10 @@ import { Sidebar } from 'components/SideBar'
 import React from 'react'
 import { FiMenu } from 'react-icons/fi'
 
-function Dashboard() {
+function Dashboard(props) {
   return (
     <Flex w="100%">
-      <Sidebar />
+      <Sidebar {...props} />
       <Flex
         pos="absolute"
         top="50%"

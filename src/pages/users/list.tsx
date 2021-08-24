@@ -3,10 +3,10 @@ import { Sidebar } from 'components/SideBar'
 import React from 'react'
 import { FiMenu } from 'react-icons/fi'
 
-function List() {
+function List(props) {
   return (
     <Flex w="100%">
-      <Sidebar />
+      <Sidebar {...props} />
 
       <Text>
         Click the
